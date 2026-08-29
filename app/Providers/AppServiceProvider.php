@@ -3,6 +3,7 @@
 namespace App\Providers;
 
 use App\Services\ContentService;
+use Illuminate\Support\Facades\URL;
 use Illuminate\Support\Facades\View;
 use Illuminate\Support\ServiceProvider;
 
@@ -15,6 +16,10 @@ class AppServiceProvider extends ServiceProvider
 
     public function boot(): void
     {
+        if ($this->app->environment('production')) {
+            URL::forceScheme('https');
+        }
+
         View::composer(['partials.footer', 'partials.nav', 'layouts.app'], function ($view) {
             try {
                 $content = app(ContentService::class);

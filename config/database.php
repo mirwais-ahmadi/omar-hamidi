@@ -59,9 +59,33 @@ return [
             'prefix_indexes' => true,
             'strict' => true,
             'engine' => null,
-            'options' => extension_loaded('pdo_mysql') ? array_filter([
-                (PHP_VERSION_ID >= 80500 ? Mysql::ATTR_SSL_CA : PDO::MYSQL_ATTR_SSL_CA) => env('MYSQL_ATTR_SSL_CA'),
-            ]) : [],
+            'options' => extension_loaded('pdo_mysql') ? (static function (): array {
+                $options = [];
+                $sslEnabled = filter_var(env('MYSQL_SSL', false), FILTER_VALIDATE_BOOLEAN);
+                $ca = env('MYSQL_ATTR_SSL_CA');
+
+                if (! $ca && $sslEnabled) {
+                    $ca = \Illuminate\Support\Arr::first([
+                        '/etc/ssl/certs/ca-certificates.crt',
+                        '/etc/pki/tls/certs/ca-bundle.crt',
+                        '/etc/ssl/cert.pem',
+                    ], fn ($path) => is_readable($path));
+                }
+
+                if ($ca) {
+                    $options[PHP_VERSION_ID >= 80500 ? Mysql::ATTR_SSL_CA : PDO::MYSQL_ATTR_SSL_CA] = $ca;
+                } elseif ($sslEnabled) {
+                    // Aiven: SSL را بدون فایل CA محلی فعال می‌کند
+                    $options[PDO::MYSQL_ATTR_SSL_CA] = true;
+                    $options[PDO::MYSQL_ATTR_SSL_VERIFY_SERVER_CERT] = false;
+                }
+
+                if ($sslEnabled && filter_var(env('MYSQL_SSL_VERIFY', true), FILTER_VALIDATE_BOOLEAN) === false) {
+                    $options[PDO::MYSQL_ATTR_SSL_VERIFY_SERVER_CERT] = false;
+                }
+
+                return $options;
+            })() : [],
         ],
 
         'mariadb' => [

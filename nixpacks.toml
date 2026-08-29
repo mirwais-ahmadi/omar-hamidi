@@ -1,0 +1,12 @@
+# Railway + Nixpacks settings for Laravel
+[variables]
+NIXPACKS_PHP_ROOT_DIR = "/app/public"
+NIXPACKS_NODE_VERSION = "20"
+
+[phases.setup]
+nixPkgs = ["...", "nodejs_20"]
+
+[phases.build]
+cmds = [
+  "npm run build",
+]

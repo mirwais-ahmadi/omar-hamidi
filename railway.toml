@@ -1,0 +1,7 @@
+[build]
+builder = "NIXPACKS"
+
+[deploy]
+# قبل از بالا آمدن نسخه جدید، مایگریشن‌ها اجرا می‌شوند
+releaseCommand = "php artisan migrate --force"
+restartPolicyType = "ON_FAILURE"
