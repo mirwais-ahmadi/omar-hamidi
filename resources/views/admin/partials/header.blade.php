@@ -10,7 +10,7 @@
         </button>
         <div>
             <p class="text-sm font-semibold text-ink">@yield('heading', 'مدیریت محتوا')</p>
-            <p class="text-xs text-ink-soft">محتوای سایت را از اینجا ویرایش کنید</p>
+            <p class="text-xs text-ink-soft">محتوای سایت را از اینجا مدیریت کنید</p>
         </div>
     </div>
 
@@ -18,11 +18,10 @@
         <a href="{{ route('home') }}" target="_blank" class="hidden rounded-full bg-brand-soft px-3 py-1 text-xs font-medium text-brand-deep sm:inline-flex">
             مشاهده سایت
         </a>
-        <div class="flex items-center gap-2 rounded-xl border border-line bg-mist/60 px-2.5 py-1.5">
+        <div class="flex items-center gap-2 rounded-xl border border-line bg-mist/60 px-2.5 py-1">
             <span class="flex h-8 w-8 items-center justify-center rounded-lg bg-brand text-xs font-bold text-white">ا</span>
             <div class="hidden sm:block">
                 <p class="text-xs font-semibold text-ink">{{ auth()->user()->name ?? 'ادمین' }}</p>
-                <p class="text-[11px] text-ink-soft">{{ auth()->user()?->roleLabel() ?? '' }}</p>
             </div>
         </div>
         <form action="{{ route('admin.logout') }}" method="POST">
