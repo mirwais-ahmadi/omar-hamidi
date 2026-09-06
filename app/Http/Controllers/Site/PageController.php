@@ -38,6 +38,15 @@ class PageController extends Controller
         ]);
     }
 
+    public function why(): View
+    {
+        return view('pages.why', [
+            'why' => $this->content->section('why'),
+            'whyItems' => $this->content->items('why'),
+            'settings' => $this->content->section('settings'),
+        ]);
+    }
+
     public function products(): View
     {
         return view('pages.products', [

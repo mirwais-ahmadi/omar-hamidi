@@ -19,7 +19,7 @@
     <div class="grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
             <div class="rounded-2xl border border-line bg-white p-5">
                 <p class="text-sm text-ink-soft">صفحات سایت</p>
-                <p class="mt-2 text-2xl font-extrabold text-ink">۶</p>
+                <p class="mt-2 text-2xl font-extrabold text-ink">۷</p>
                 <p class="mt-1 text-xs text-ink-soft">خانه تا تماس</p>
             </div>
             <div class="rounded-2xl border border-line bg-white p-5">
@@ -45,6 +45,7 @@
                 @foreach ([
                     ['route' => 'admin.hero', 'label' => 'ویرایش Hero'],
                     ['route' => 'admin.about', 'label' => 'درباره ما'],
+                    ['route' => 'admin.why', 'label' => 'چرا عمر حمیدی'],
                     ['route' => 'admin.products', 'label' => 'محصولات'],
                     ['route' => 'admin.contact', 'label' => 'اطلاعات تماس'],
                     ...((auth()->user()?->canManageUsers() ?? false) ? [['route' => 'admin.users.index', 'label' => 'مدیریت کاربران']] : []),
@@ -61,6 +62,7 @@
                 @foreach ([
                     ['name' => 'صفحه اصلی', 'status' => 'آماده ویرایش'],
                     ['name' => 'درباره ما', 'status' => 'آماده ویرایش'],
+                    ['name' => 'چرا عمر حمیدی', 'status' => 'آماده ویرایش'],
                     ['name' => 'محصولات و خدمات', 'status' => 'آماده ویرایش'],
                     ['name' => 'شبکه توزیع', 'status' => 'آماده ویرایش'],
                     ['name' => 'جوازها و شرکا', 'status' => 'آماده ویرایش'],

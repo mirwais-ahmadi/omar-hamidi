@@ -21,6 +21,7 @@
             <h3 class="text-sm font-semibold text-white/90">{{ __('Quick access') }}</h3>
             <ul class="mt-4 space-y-2 text-sm text-white/65">
                 <li><a href="{{ route('about') }}" class="hover:text-white">{{ __('About') }}</a></li>
+                <li><a href="{{ route('why') }}" class="hover:text-white">{{ __('Why Omar Hamidi') }}</a></li>
                 <li><a href="{{ route('products') }}" class="hover:text-white">{{ __('Products & Services') }}</a></li>
                 <li><a href="{{ route('network') }}" class="hover:text-white">{{ __('Distribution Network') }}</a></li>
                 <li><a href="{{ route('licenses') }}" class="hover:text-white">{{ __('Licenses') }}</a></li>

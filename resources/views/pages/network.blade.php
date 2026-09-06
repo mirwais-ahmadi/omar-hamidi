@@ -4,7 +4,6 @@
 
 @section('content')
     @include('partials.page-hero', [
-        'eyebrow' => __('Nationwide presence'),
         'title' => __('Distribution Network'),
         'subtitle' => __('Network page subtitle'),
     ])

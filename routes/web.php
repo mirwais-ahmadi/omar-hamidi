@@ -13,6 +13,7 @@ Route::get('/locale/{locale}', LocaleController::class)->name('locale.switch');
 Route::controller(PageController::class)->group(function () {
     Route::get('/', 'home')->name('home');
     Route::get('/about', 'about')->name('about');
+    Route::get('/why', 'why')->name('why');
     Route::get('/products', 'products')->name('products');
     Route::get('/network', 'network')->name('network');
     Route::get('/licenses', 'licenses')->name('licenses');
@@ -36,6 +37,9 @@ Route::prefix('admin')->name('admin.')->group(function () {
 
                 Route::get('/about', 'about')->name('about');
                 Route::post('/about', 'updateAbout')->name('about.update');
+
+                Route::get('/why', 'why')->name('why');
+                Route::post('/why', 'updateWhy')->name('why.update');
 
                 Route::get('/products', 'products')->name('products');
                 Route::post('/products', 'updateProducts')->name('products.update');

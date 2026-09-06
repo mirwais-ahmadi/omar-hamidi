@@ -44,6 +44,11 @@ class EnglishContentSeeder extends Seeder
                 'image' => 'images/hamidi/reception.png',
                 'leadership_image' => 'images/hamidi/leadership.png',
             ],
+            'why' => [
+                'title' => 'Why Omar Hamidi',
+                'intro' => 'A blend of legal credibility, international quality standards, nationwide distribution, and a specialized team — reasons that make us a trusted partner for the health sector.',
+                'closing' => 'For pharmaceutical supply, provincial representation, or strategic partnership, our team is ready to assist.',
+            ],
             'products' => [
                 'title' => 'Products & Services',
                 'intro' => 'All supplied products are registered according to national and international regulations and are widely used in both public and private sectors.',
@@ -128,6 +133,24 @@ class EnglishContentSeeder extends Seeder
                 'section' => 'partners',
                 'locale' => 'en',
                 'title' => $title,
+                'sort_order' => $index,
+            ]);
+        }
+
+        ContentItem::query()->where('section', 'why')->where('locale', 'en')->delete();
+        foreach ([
+            ['Legal credibility', 'Registered with the Ministry of Industry and Commerce, MoPH, and gold membership in the Afghanistan Chamber of Commerce.'],
+            ['International quality standards', 'Aligned with WHO, GMP, and ISO, partnering with reputable global manufacturers.'],
+            ['Nationwide distribution', '29 official agencies and effective coverage across 34 provinces, with offices in Kabul, Herat, and Mazar-e-Sharif.'],
+            ['Reliable supply chain', 'Standard storage, cold-chain management, and timely delivery even to remote areas.'],
+            ['Specialized professional team', 'Doctors, pharmacists, and specialists in logistics, finance, and international relations.'],
+            ['Competitive pricing with quality', 'Access to trusted global sources with pricing suited to the Afghan market.'],
+        ] as $index => [$title, $description]) {
+            ContentItem::query()->create([
+                'section' => 'why',
+                'locale' => 'en',
+                'title' => $title,
+                'description' => $description,
                 'sort_order' => $index,
             ]);
         }

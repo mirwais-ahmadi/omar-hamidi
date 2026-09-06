@@ -101,6 +101,57 @@ class ContentController extends Controller
         return back()->with('success', 'محتوای درباره ما (فارسی/انگلیسی) ذخیره شد.');
     }
 
+    public function why(): View
+    {
+        return view('admin.why', [
+            'fa' => $this->content->section('why', 'fa'),
+            'en' => $this->content->section('why', 'en'),
+            'faItems' => $this->content->items('why', 'fa'),
+            'enItems' => $this->content->items('why', 'en'),
+        ]);
+    }
+
+    public function updateWhy(Request $request): RedirectResponse
+    {
+        $validated = $request->validate([
+            'fa' => ['nullable', 'array'],
+            'en' => ['nullable', 'array'],
+            'fa.title' => ['nullable', 'string', 'max:255'],
+            'fa.intro' => ['nullable', 'string'],
+            'fa.closing' => ['nullable', 'string'],
+            'fa.reason_title' => ['nullable', 'array'],
+            'fa.reason_title.*' => ['nullable', 'string', 'max:255'],
+            'fa.reason_desc' => ['nullable', 'array'],
+            'fa.reason_desc.*' => ['nullable', 'string'],
+            'en.title' => ['nullable', 'string', 'max:255'],
+            'en.intro' => ['nullable', 'string'],
+            'en.closing' => ['nullable', 'string'],
+            'en.reason_title' => ['nullable', 'array'],
+            'en.reason_title.*' => ['nullable', 'string', 'max:255'],
+            'en.reason_desc' => ['nullable', 'array'],
+            'en.reason_desc.*' => ['nullable', 'string'],
+        ]);
+
+        foreach (['fa', 'en'] as $locale) {
+            $payload = $validated[$locale] ?? [];
+            $this->content->putMany('why', [
+                'title' => $payload['title'] ?? null,
+                'intro' => $payload['intro'] ?? null,
+                'closing' => $payload['closing'] ?? null,
+            ], $locale);
+
+            $this->content->syncItems(
+                'why',
+                $payload['reason_title'] ?? [],
+                $payload['reason_desc'] ?? [],
+                [],
+                $locale
+            );
+        }
+
+        return back()->with('success', 'صفحه چرا عمر حمیدی (فارسی/انگلیسی) ذخیره شد.');
+    }
+
     public function products(): View
     {
         return view('admin.products', [
