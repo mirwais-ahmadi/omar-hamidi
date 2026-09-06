@@ -2,6 +2,7 @@
     $user = auth()->user();
     $nav = [
         ['route' => 'admin.dashboard', 'label' => 'داشبورد', 'icon' => 'dashboard', 'match' => 'admin.dashboard'],
+        ['route' => 'admin.guide', 'label' => 'رهنما', 'icon' => 'guide', 'match' => 'admin.guide'],
         ['route' => 'admin.hero', 'label' => 'صفحه اصلی / Hero', 'icon' => 'home', 'match' => 'admin.hero'],
         ['route' => 'admin.about', 'label' => 'درباره ما', 'icon' => 'about', 'match' => 'admin.about'],
         ['route' => 'admin.why', 'label' => 'چرا عمر حمیدی', 'icon' => 'why', 'match' => 'admin.why'],

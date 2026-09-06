@@ -43,6 +43,7 @@
         <x-admin.card title="میانبرهای مدیریت" description="دسترسی سریع به بخش‌های پرکاربرد">
             <div class="grid gap-2 sm:grid-cols-2">
                 @foreach ([
+                    ['route' => 'admin.guide', 'label' => 'رهنمای محتوا'],
                     ['route' => 'admin.hero', 'label' => 'ویرایش Hero'],
                     ['route' => 'admin.about', 'label' => 'درباره ما'],
                     ['route' => 'admin.why', 'label' => 'چرا عمر حمیدی'],

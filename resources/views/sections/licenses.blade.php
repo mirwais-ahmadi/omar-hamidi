@@ -5,13 +5,25 @@
             <h2 class="mt-3 text-3xl font-extrabold text-ink">{{ __('Legal credibility') }}</h2>
             <p class="mt-4 text-sm leading-7 text-ink-soft">{{ $licenses['intro'] ?? '' }}</p>
         </div>
-        <div class="mt-10 grid gap-6 md:grid-cols-2">
-            <figure class="reveal overflow-hidden rounded-3xl border border-line bg-white p-4">
-                <img src="{{ asset($licenses['commerce_image'] ?? 'images/hamidi/license-commerce.png') }}" alt="{{ $licenses['commerce_caption'] ?? '' }}" class="w-full object-contain">
+        <div class="mt-10 grid gap-6">
+            <figure class="reveal overflow-hidden rounded-3xl border border-line bg-white p-3 sm:p-4">
+                <div class="flex aspect-[297/210] items-center justify-center overflow-hidden rounded-2xl bg-mist/60">
+                    <img
+                        src="{{ asset($licenses['commerce_image'] ?? 'images/hamidi/license-commerce.png') }}"
+                        alt="{{ $licenses['commerce_caption'] ?? '' }}"
+                        class="max-h-full max-w-full object-contain"
+                    >
+                </div>
                 <figcaption class="mt-3 text-center text-sm text-ink-soft">{{ $licenses['commerce_caption'] ?? '' }}</figcaption>
             </figure>
-            <figure class="reveal reveal-delay-1 overflow-hidden rounded-3xl border border-line bg-white p-4">
-                <img src="{{ asset($licenses['moph_image'] ?? 'images/hamidi/license-moph.png') }}" alt="{{ $licenses['moph_caption'] ?? '' }}" class="w-full object-contain">
+            <figure class="reveal reveal-delay-1 overflow-hidden rounded-3xl border border-line bg-white p-3 sm:p-4">
+                <div class="flex aspect-[297/210] items-center justify-center overflow-hidden rounded-2xl bg-mist/60">
+                    <img
+                        src="{{ asset($licenses['moph_image'] ?? 'images/hamidi/license-moph.png') }}"
+                        alt="{{ $licenses['moph_caption'] ?? '' }}"
+                        class="max-h-full max-w-full object-contain"
+                    >
+                </div>
                 <figcaption class="mt-3 text-center text-sm text-ink-soft">{{ $licenses['moph_caption'] ?? '' }}</figcaption>
             </figure>
         </div>
