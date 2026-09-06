@@ -93,8 +93,9 @@
 #site-nav .nav-locale { @apply border-white/30 bg-white/10; }
 #site-nav .nav-locale a { @apply text-white/80 hover:text-white; }
 #site-nav .nav-locale a.is-active { @apply bg-white text-brand-deep; }
-#site-nav .nav-ghost { @apply border-white/30 bg-white/10 text-white hover:border-white hover:bg-white/20; }
 #site-nav .nav-menu-btn { @apply border-white/30 bg-white/10 text-white; }
+#site-nav .nav-mobile-link { @apply text-white/90 hover:bg-white/10; }
+#site-nav .nav-mobile-link.is-active { @apply bg-white/15 text-white; }
 
 /* Scrolled / solid nav */
 #site-nav.nav-scrolled .nav-brand-title { @apply text-ink; }
@@ -104,10 +105,11 @@
 #site-nav.nav-scrolled .nav-locale { @apply border-line bg-white/80; }
 #site-nav.nav-scrolled .nav-locale a { @apply text-ink-soft hover:text-brand-deep; }
 #site-nav.nav-scrolled .nav-locale a.is-active { @apply bg-brand text-white; }
-#site-nav.nav-scrolled .nav-ghost { @apply border-line bg-white/80 text-ink-soft hover:border-brand hover:text-brand-deep; }
 #site-nav.nav-scrolled .nav-menu-btn { @apply border-line bg-white text-ink; }
 #site-nav.nav-scrolled #mobile-menu { @apply border-line bg-white; }
-#site-nav.nav-scrolled #mobile-menu a { @apply text-ink; }
+#site-nav.nav-scrolled .nav-mobile-link { @apply text-ink hover:bg-brand-soft; }
+#site-nav.nav-scrolled .nav-mobile-link.is-active { @apply bg-brand-soft text-brand-deep; }
+#site-nav.nav-scrolled .nav-mobile-cta { @apply bg-brand text-white; }
 
 .admin-input {
     @apply rounded-xl border border-line bg-mist/40 px-3.5 py-2.5 text-sm text-ink outline-none transition;

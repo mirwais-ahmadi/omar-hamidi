@@ -17,25 +17,25 @@
 @endphp
 
 <header id="site-nav" class="fixed inset-x-0 top-0 z-50 transition-all duration-300">
-    <div class="mx-auto flex max-w-7xl items-center justify-between gap-4 px-4 py-4 sm:px-6 lg:px-8">
-        <a href="{{ route('home') }}" class="group flex min-w-0 items-center gap-3">
+    <div class="mx-auto flex h-16 max-w-7xl items-center justify-between gap-3 px-4 sm:h-[4.25rem] sm:px-6 lg:px-8">
+        <a href="{{ route('home') }}" class="flex min-w-0 shrink-0 items-center gap-2.5">
             <img
                 src="{{ asset('logo/logo.jpeg') }}"
                 alt="{{ $brandName }}"
-                class="h-12 w-auto max-w-[9.5rem] rounded-lg bg-white object-contain p-1 shadow-sm ring-1 ring-white/40 sm:h-14 sm:max-w-[11rem]"
+                class="h-10 w-auto shrink-0 rounded-md bg-white object-contain p-0.5 shadow-sm ring-1 ring-white/40 sm:h-11"
             >
-            <div class="hidden min-w-0 leading-tight sm:block">
-                <span class="nav-brand-title block truncate text-sm font-bold sm:text-base">{{ $brandName }}</span>
+            <div class="hidden min-w-0 max-w-[10rem] leading-tight 2xl:block 2xl:max-w-[13rem]">
+                <span class="nav-brand-title block truncate text-sm font-bold">{{ $brandName }}</span>
                 <span @class(['nav-brand-sub block truncate text-[11px] font-semibold tracking-wide', 'font-latin' => $currentLocale === 'fa'])>{{ $brandSub }}</span>
             </div>
         </a>
 
-        <nav class="hidden items-center gap-1 lg:flex" aria-label="{{ __('Quick access') }}">
+        <nav class="hidden min-w-0 flex-1 items-center justify-center gap-0.5 xl:flex" aria-label="{{ __('Quick access') }}">
             @foreach ($links as $link)
                 <a
                     href="{{ route($link['route']) }}"
                     @class([
-                        'nav-link rounded-lg px-3 py-2 text-sm font-medium transition',
+                        'nav-link whitespace-nowrap rounded-lg px-2 py-2 text-[13px] font-medium transition 2xl:px-2.5',
                         'is-active' => request()->routeIs($link['route']),
                     ])
                 >
@@ -44,59 +44,58 @@
             @endforeach
         </nav>
 
-        <div class="flex items-center gap-2">
-            <div class="nav-locale flex items-center rounded-xl border p-1 text-xs font-semibold">
+        <div class="flex shrink-0 items-center gap-2">
+            <div class="nav-locale flex items-center rounded-lg border p-0.5 text-xs font-semibold">
                 <a
                     href="{{ route('locale.switch', 'fa') }}"
                     @class([
-                        'rounded-lg px-2.5 py-1.5 transition',
+                        'rounded-md px-2 py-1.5 transition',
                         'is-active' => $currentLocale === 'fa',
                     ])
                     hreflang="fa"
                     lang="fa"
-                >{{ __('Persian') }}</a>
+                    title="{{ __('Persian') }}"
+                >فا</a>
                 <a
                     href="{{ route('locale.switch', 'en') }}"
                     @class([
-                        'rounded-lg px-2.5 py-1.5 font-latin transition',
+                        'rounded-md px-2 py-1.5 font-latin transition',
                         'is-active' => $currentLocale === 'en',
                     ])
                     hreflang="en"
                     lang="en"
-                >{{ __('English') }}</a>
+                    title="{{ __('English') }}"
+                >EN</a>
             </div>
-            <a href="{{ route('admin.dashboard') }}" class="nav-ghost hidden rounded-xl border px-3 py-2.5 text-sm font-medium transition sm:inline-flex">
-                {{ __('Admin') }}
-            </a>
-            <a href="{{ route('contact') }}" class="hidden rounded-xl bg-brand px-4 py-2.5 text-sm font-semibold text-white transition hover:bg-brand-deep sm:inline-flex">
+
+            <a href="{{ route('contact') }}" class="hidden rounded-lg bg-brand px-3.5 py-2 text-sm font-semibold text-white transition hover:bg-brand-deep 2xl:inline-flex">
                 {{ __('Contact Us') }}
             </a>
-            <button id="menu-toggle" type="button" class="nav-menu-btn inline-flex h-11 w-11 items-center justify-center rounded-xl border lg:hidden" aria-controls="mobile-menu" aria-expanded="false" aria-label="Menu">
-                <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 7h16M4 12h16M4 17h16" stroke-linecap="round"/></svg>
+
+            <button id="menu-toggle" type="button" class="nav-menu-btn inline-flex h-10 w-10 items-center justify-center rounded-lg border xl:hidden" aria-controls="mobile-menu" aria-expanded="false" aria-label="Menu">
+                <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                    <path d="M4 7h16M4 12h16M4 17h16" stroke-linecap="round"/>
+                </svg>
             </button>
         </div>
     </div>
 
-    <div id="mobile-menu" class="hidden border-t border-white/15 bg-brand-deep/95 backdrop-blur-md lg:hidden">
-        <nav class="mx-auto flex max-w-7xl flex-col gap-1 px-4 py-4" aria-label="Mobile">
+    <div id="mobile-menu" class="hidden border-t border-white/15 bg-brand-deep/95 backdrop-blur-md xl:hidden">
+        <nav class="mx-auto flex max-h-[min(70vh,28rem)] max-w-7xl flex-col gap-0.5 overflow-y-auto px-4 py-3 sm:px-6" aria-label="Mobile">
             @foreach ($links as $link)
                 <a
                     href="{{ route($link['route']) }}"
                     @class([
-                        'rounded-lg px-3 py-3 text-base font-medium text-white/90',
-                        'bg-white/15 text-white' => request()->routeIs($link['route']),
-                        'hover:bg-white/10' => ! request()->routeIs($link['route']),
+                        'nav-mobile-link rounded-lg px-3 py-3 text-base font-medium',
+                        'is-active' => request()->routeIs($link['route']),
                     ])
                 >
                     {{ $link['label'] }}
                 </a>
             @endforeach
-            <div class="mt-2 flex gap-2">
-                <a href="{{ route('locale.switch', 'fa') }}" @class(['flex-1 rounded-xl border px-3 py-2.5 text-center text-sm font-semibold', 'border-white bg-white text-brand-deep' => $currentLocale === 'fa', 'border-white/30 text-white' => $currentLocale !== 'fa'])>{{ __('Persian') }}</a>
-                <a href="{{ route('locale.switch', 'en') }}" @class(['font-latin flex-1 rounded-xl border px-3 py-2.5 text-center text-sm font-semibold', 'border-white bg-white text-brand-deep' => $currentLocale === 'en', 'border-white/30 text-white' => $currentLocale !== 'en'])>{{ __('English') }}</a>
-            </div>
-            <a href="{{ route('contact') }}" class="mt-2 rounded-xl bg-brand px-4 py-3 text-center text-sm font-semibold text-white">{{ __('Contact Us') }}</a>
-            <a href="{{ route('admin.dashboard') }}" class="rounded-xl border border-white/25 px-4 py-3 text-center text-sm font-medium text-white/80">{{ __('Admin Panel') }}</a>
+            <a href="{{ route('contact') }}" class="nav-mobile-cta mt-2 rounded-xl bg-accent px-4 py-3 text-center text-sm font-semibold text-white">
+                {{ __('Contact Us') }}
+            </a>
         </nav>
     </div>
 </header>
