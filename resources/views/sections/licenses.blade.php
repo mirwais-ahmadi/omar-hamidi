@@ -29,7 +29,6 @@
         </div>
         <div class="reveal mt-8 flex flex-wrap justify-center gap-3 text-xs font-medium text-ink-soft">
             <span class="rounded-lg border border-line bg-white px-3 py-1.5">{{ __('License no.') }}: {{ $licenses['license_no'] ?? '' }}</span>
-            <span class="rounded-lg border border-line bg-white px-3 py-1.5">TIN: {{ $licenses['tin'] ?? '' }}</span>
             <span class="rounded-lg border border-line bg-white px-3 py-1.5">{{ __('CEO') }}: {{ $licenses['ceo_name'] ?? '' }}</span>
             <span class="rounded-lg border border-line bg-white px-3 py-1.5">{{ __('Vice CEO') }}: {{ $licenses['vice_name'] ?? '' }}</span>
         </div>

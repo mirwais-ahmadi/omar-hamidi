@@ -8,7 +8,7 @@
         : ($settings['company_en'] ?? 'Omar Hamidi Trading Ltd');
 @endphp
 
-<footer class="border-t border-line bg-ink text-white">
+<footer class="border-t border-line bg-brand-deep text-white">
     <div class="mx-auto grid max-w-7xl gap-10 px-4 py-14 sm:px-6 lg:grid-cols-12 lg:px-8">
         <div class="lg:col-span-5">
             <p class="text-lg font-bold">{{ $brandName }}</p>

@@ -16,7 +16,6 @@
                 @endforeach
             </div>
             <div class="mt-8 flex flex-wrap gap-3 text-xs font-medium">
-                <span class="rounded-lg bg-brand-soft px-3 py-1.5 text-brand-deep">TIN {{ $licensesTin ?? '9027556795' }}</span>
                 <span class="rounded-lg bg-brand-soft px-3 py-1.5 text-brand-deep">{{ __('Gold Chamber membership') }}</span>
                 <span class="rounded-lg bg-brand-soft px-3 py-1.5 text-brand-deep">{{ __('MoPH registered') }}</span>
             </div>

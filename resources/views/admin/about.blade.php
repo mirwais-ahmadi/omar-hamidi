@@ -13,7 +13,8 @@
         <x-admin.card title="تصاویر بخش درباره ما" description="تصاویر برای هر دو زبان مشترک هستند">
             <div class="space-y-4">
                 <x-admin.image-field label="تصویر معرفی شرکت" name="image" :current="$fa['image'] ?? ($en['image'] ?? null)" />
-                <x-admin.image-field label="تصویر پیام رهبری" name="leadership_image" :current="$fa['leadership_image'] ?? ($en['leadership_image'] ?? null)" />
+                <x-admin.image-field label="تصویر مدیرعامل (پیام رهبری)" name="leadership_image" :current="$fa['leadership_image'] ?? ($en['leadership_image'] ?? null)" />
+                <x-admin.image-field label="تصویر معاون (پیام رهبری)" name="vice_image" :current="$fa['vice_image'] ?? ($en['vice_image'] ?? null)" />
             </div>
         </x-admin.card>
 

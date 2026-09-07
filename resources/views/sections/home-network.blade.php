@@ -2,7 +2,7 @@
     $offices = array_values(array_filter(array_map('trim', preg_split('/·|•|,/', $network['offices'] ?? '') ?: [])));
 @endphp
 
-<section class="relative overflow-hidden bg-ink py-20 text-white sm:py-28">
+<section class="relative overflow-hidden bg-brand-deep py-20 text-white sm:py-28">
     <div class="pointer-events-none absolute inset-0 opacity-40"
          style="background: radial-gradient(ellipse 55% 50% at 85% 15%, rgba(27,154,170,0.35), transparent 55%);"></div>
     <div class="relative mx-auto grid max-w-7xl items-center gap-10 px-4 sm:px-6 lg:grid-cols-2 lg:gap-16 lg:px-8">

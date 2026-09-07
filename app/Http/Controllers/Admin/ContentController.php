@@ -83,6 +83,7 @@ class ContentController extends Controller
             'en.*' => ['nullable', 'string'],
             'image' => ['nullable', 'image', 'mimes:jpg,jpeg,png,webp,gif', 'max:5120'],
             'leadership_image' => ['nullable', 'image', 'mimes:jpg,jpeg,png,webp,gif', 'max:5120'],
+            'vice_image' => ['nullable', 'image', 'mimes:jpg,jpeg,png,webp,gif', 'max:5120'],
         ]);
 
         $keys = [
@@ -97,6 +98,7 @@ class ContentController extends Controller
 
         $this->storeSharedImage($request, 'image', 'about', 'image');
         $this->storeSharedImage($request, 'leadership_image', 'about', 'leadership_image');
+        $this->storeSharedImage($request, 'vice_image', 'about', 'vice_image');
 
         return back()->with('success', 'محتوای درباره ما (فارسی/انگلیسی) ذخیره شد.');
     }
@@ -205,10 +207,17 @@ class ContentController extends Controller
                 'goals' => $payload['goals'] ?? null,
             ], $locale);
 
+            $previousImages = $this->content->items('products', $locale)
+                ->pluck('image')
+                ->filter()
+                ->values()
+                ->all();
+
             $images = $this->resolveItemImages(
                 $request->file("{$locale}.product_image", []),
                 $request->input("{$locale}.product_image_current", []),
-                $payload['product_title'] ?? []
+                $payload['product_title'] ?? [],
+                $locale,
             );
 
             $this->content->syncItems(
@@ -218,6 +227,8 @@ class ContentController extends Controller
                 $images,
                 $locale
             );
+
+            $this->media->deleteOrphans($previousImages, $images);
         }
 
         return back()->with('success', 'محصولات و خدمات (فارسی/انگلیسی) ذخیره شد.');
@@ -272,7 +283,7 @@ class ContentController extends Controller
             'moph_image' => ['nullable', 'image', 'mimes:jpg,jpeg,png,webp,gif', 'max:5120'],
         ]);
 
-        $keys = ['intro', 'license_no', 'tin', 'ceo_name', 'vice_name', 'commerce_caption', 'moph_caption'];
+        $keys = ['intro', 'license_no', 'ceo_name', 'vice_name', 'commerce_caption', 'moph_caption'];
 
         $this->content->putLocalized('licenses', [
             'fa' => $this->onlyKeys($validated['fa'] ?? [], $keys),
@@ -387,7 +398,10 @@ class ContentController extends Controller
 
         /** @var UploadedFile $file */
         $file = $request->file($input);
-        $path = $this->media->storeUpload($file, $section.'-'.$field);
+        $previous = $this->content->get($section, $field, null, 'fa')
+            ?: $this->content->get($section, $field, null, 'en');
+
+        $path = $this->media->storeSectionImage($file, $section, $field, $previous);
 
         foreach (ContentService::LOCALES as $locale) {
             $this->content->put($section, $field, $path, $locale);
@@ -400,20 +414,27 @@ class ContentController extends Controller
      * @param  array<int, string|null>  $titles
      * @return list<string>
      */
-    private function resolveItemImages(array $files, array $current, array $titles): array
+    private function resolveItemImages(array $files, array $current, array $titles, string $locale): array
     {
         $images = [];
         $count = max(count($titles), count($current), count($files));
 
         for ($i = 0; $i < $count; $i++) {
             $file = $files[$i] ?? null;
+            $previous = trim((string) ($current[$i] ?? ''));
 
             if ($file instanceof UploadedFile && $file->isValid()) {
-                $images[$i] = $this->media->storeUpload($file, 'product-'.$i);
+                $images[$i] = $this->media->storeProductImage(
+                    $file,
+                    $locale,
+                    $i,
+                    $titles[$i] ?? null,
+                    $previous !== '' ? $previous : null,
+                );
                 continue;
             }
 
-            $images[$i] = trim((string) ($current[$i] ?? ''));
+            $images[$i] = $previous;
         }
 
         return $images;

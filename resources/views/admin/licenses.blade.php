@@ -23,7 +23,6 @@
                     <x-admin.textarea label="توضیح" name="fa[intro]" rows="3" :value="old('fa.intro', $fa['intro'] ?? '')" />
                     <div class="grid gap-4 sm:grid-cols-2">
                         <x-admin.input label="شماره جواز" name="fa[license_no]" :value="old('fa.license_no', $fa['license_no'] ?? '')" />
-                        <x-admin.input label="TIN" name="fa[tin]" :value="old('fa.tin', $fa['tin'] ?? '')" dir="ltr" />
                         <x-admin.input label="مدیرعامل" name="fa[ceo_name]" :value="old('fa.ceo_name', $fa['ceo_name'] ?? '')" />
                         <x-admin.input label="معاون" name="fa[vice_name]" :value="old('fa.vice_name', $fa['vice_name'] ?? '')" />
                     </div>
@@ -36,7 +35,6 @@
                     <x-admin.textarea label="Intro" name="en[intro]" rows="3" :value="old('en.intro', $en['intro'] ?? '')" />
                     <div class="grid gap-4 sm:grid-cols-2">
                         <x-admin.input label="License no." name="en[license_no]" :value="old('en.license_no', $en['license_no'] ?? '')" />
-                        <x-admin.input label="TIN" name="en[tin]" :value="old('en.tin', $en['tin'] ?? '')" />
                         <x-admin.input label="CEO" name="en[ceo_name]" :value="old('en.ceo_name', $en['ceo_name'] ?? '')" />
                         <x-admin.input label="Vice CEO" name="en[vice_name]" :value="old('en.vice_name', $en['vice_name'] ?? '')" />
                     </div>

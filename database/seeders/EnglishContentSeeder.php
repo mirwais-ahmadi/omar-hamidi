@@ -27,7 +27,7 @@ class EnglishContentSeeder extends Seeder
             ],
             'about' => [
                 'title' => 'A trusted institution in healthcare import and distribution',
-                'p1' => 'Omar Hamidi Trading Ltd is an officially registered company with the Ministry of Industry and Commerce of Afghanistan under TIN 9027556795. The company is also registered with the Ministry of Public Health and holds gold membership in the Afghanistan Chamber of Commerce and Industry.',
+                'p1' => 'Omar Hamidi Trading Ltd is an officially registered company with the Ministry of Industry and Commerce of Afghanistan. The company is also registered with the Ministry of Public Health and holds gold membership in the Afghanistan Chamber of Commerce and Industry.',
                 'p2' => 'It is recognized as a reliable institution in importing, supplying, and distributing pharmaceuticals, medical equipment, and other healthcare products. A strong commitment to quality has built broad trust among doctors, pharmacists, and healthcare professionals nationwide.',
                 'p3' => 'Founded in 1385 Solar Hijri (2006), the company began with a structured business plan and a professional team of doctors, pharmacists, and specialists in finance, logistics, IT, and domestic and international relations.',
                 'leadership_title' => 'Committed to community health',
@@ -43,6 +43,7 @@ class EnglishContentSeeder extends Seeder
                 'commitments' => "Quality\nIntegrity\nLeadership\nCommitment\nRespect\nHumanity",
                 'image' => 'images/hamidi/reception.png',
                 'leadership_image' => 'images/hamidi/leadership.png',
+                'vice_image' => 'images/hamidi/leadership.png',
             ],
             'why' => [
                 'title' => 'Why Omar Hamidi',
@@ -68,7 +69,6 @@ class EnglishContentSeeder extends Seeder
             'licenses' => [
                 'intro' => 'The company holds an import activity license for medicines and medical equipment, as well as a trading license from the Ministry of Industry and Commerce.',
                 'license_no' => '10021',
-                'tin' => '9027556795',
                 'ceo_name' => 'Mohammad Halim Moshfiq',
                 'vice_name' => 'Shah Wali Hamidi',
                 'commerce_caption' => 'Trading License — Ministry of Industry and Commerce',

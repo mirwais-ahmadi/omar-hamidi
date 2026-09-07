@@ -69,6 +69,18 @@
                         </thead>
                         <tbody class="text-ink-soft">
                             <tr class="border-b border-line/70">
+                                <td class="py-2.5 pe-3">محل ذخیره آپلودها</td>
+                                <td class="py-2.5 font-latin">images/uploads/{section}/ — هر بخش پوشه جدا</td>
+                            </tr>
+                            <tr class="border-b border-line/70">
+                                <td class="py-2.5 pe-3">نام فایل</td>
+                                <td class="py-2.5">نام معنادار مثل <span class="font-latin">hero-banner.jpg</span> یا <span class="font-latin">product-01-pharma.webp</span></td>
+                            </tr>
+                            <tr class="border-b border-line/70">
+                                <td class="py-2.5 pe-3">تعویض تصویر</td>
+                                <td class="py-2.5">فایل قبلیِ آپلودشده به‌صورت خودکار از سرور حذف می‌شود تا حجم اضافه نماند</td>
+                            </tr>
+                            <tr class="border-b border-line/70">
                                 <td class="py-2.5 pe-3">فرمت فایل</td>
                                 <td class="py-2.5 font-latin">JPG / JPEG / PNG / WEBP / GIF</td>
                             </tr>
@@ -117,10 +129,10 @@
                                 <td class="py-2.5">عکس محیط دفتر / انبار / تیم</td>
                             </tr>
                             <tr class="border-b border-line/70">
-                                <td class="py-2.5 pe-3">پیام رهبری</td>
+                                <td class="py-2.5 pe-3">پیام رهبری — مدیرعامل / معاون</td>
                                 <td class="py-2.5 pe-3 font-latin">۱∶۱ مربع</td>
                                 <td class="py-2.5 pe-3 font-latin">۸۰۰ × ۸۰۰</td>
-                                <td class="py-2.5">چهره در بالای کادر؛ از بالا برش می‌خورد</td>
+                                <td class="py-2.5">دو تصویر جدا؛ چهره در بالای کادر؛ نام زیر هر عکس نمایش داده می‌شود</td>
                             </tr>
                             <tr class="border-b border-line/70">
                                 <td class="py-2.5 pe-3">محصول / دسته محصول</td>
@@ -187,7 +199,7 @@
                     <li><strong class="text-ink">چشم‌انداز / مأموریت:</strong> متن آزاد.</li>
                     <li><strong class="text-ink">ارزش‌ها و تعهدات:</strong> هر مورد در یک خط جدا (با Enter). سیستم هر خط را به‌صورت یک آیتم نشان می‌دهد.</li>
                     <li><strong class="text-ink">فلسفه:</strong> عنوان + متن توضیحی.</li>
-                    <li><strong class="text-ink">تصویر معرفی:</strong> ۴∶۳ | <strong class="text-ink">تصویر رهبری:</strong> مربع ۱∶۱.</li>
+                    <li><strong class="text-ink">تصویر معرفی:</strong> ۴∶۳ | <strong class="text-ink">تصویر مدیرعامل و معاون:</strong> مربع ۱∶۱ (هر کدام جداگانه).</li>
                 </ul>
             </section>
 
@@ -240,7 +252,7 @@
                 </div>
                 <p class="mt-2 text-sm leading-7 text-ink-soft">مسیر عمومی: <span class="font-latin text-ink">/licenses</span></p>
                 <ul class="mt-4 list-disc space-y-2 pe-5 text-sm leading-7 text-ink-soft">
-                    <li>متن معرفی، شماره جواز، TIN، نام مدیرعامل و معاون، و عنوان زیر هر تصویر جواز.</li>
+                    <li>متن معرفی، شماره جواز، نام مدیرعامل و معاون، و عنوان زیر هر تصویر جواز.</li>
                     <li><strong class="text-ink">تصویر جواز تجارت</strong> و <strong class="text-ink">جواز وزارت صحت</strong>: اسکن واضح به‌صورت <strong class="text-ink">A4 افقی (landscape)</strong>؛ متن سند باید راست و خوانا باشد.</li>
                     <li>این تصاویر در کادر افقی کامل نمایش داده می‌شوند و برش نمی‌خورند.</li>
                 </ul>

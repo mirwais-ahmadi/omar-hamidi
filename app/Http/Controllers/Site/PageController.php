@@ -29,12 +29,9 @@ class PageController extends Controller
 
     public function about(): View
     {
-        $licenses = $this->content->section('licenses');
-
         return view('pages.about', [
             'about' => $this->content->section('about'),
             'settings' => $this->content->section('settings'),
-            'licensesTin' => $licenses['tin'] ?? '۹۰۲۷۵۵۶۷۹۵',
         ]);
     }
 
